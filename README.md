@@ -1,37 +1,39 @@
 # Matt Paints!
 
-## Project setup
+Fun website for my friend and his fun painting business. Fun!
+
+Built using Vue-CLI
+
+## Cool Tools
+
+-   Vue
+-   SCSS
+-   Chia / Mocha test
+
+## Commands, mans
+
+Typical NPM commands
+
+-   Compiles and hot-reloads for development
 
 ```
-npm install
+npm start
 ```
 
-### Compiles and hot-reloads for development
-
-```
-npm run serve
-```
-
-### Compiles and minifies for production
+-   Compiles and minifies for production
 
 ```
 npm run build
 ```
 
-### Run your tests
+-   test that sh\*t
 
 ```
 npm run test
 ```
 
-### Lints and fixes files
+-   Lint it... like a belly button
 
 ```
 npm run lint
-```
-
-### Run your unit tests
-
-```
-npm run test:unit
 ```
