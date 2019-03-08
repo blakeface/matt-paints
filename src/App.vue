@@ -1,22 +1,26 @@
 <template>
 	<main id="app">
-		<Landing />
+		<Welcome/>
 	</main>
 </template>
 <script>
-import Landing from "./components/Landing.vue";
+	import Welcome from "./components/Welcome.vue";
 
-export default {
-	name: "app",
-	components: {
-		Landing
-	}
-};
+	export default {
+		name: "app",
+		components: {
+			Welcome
+		}
+	};
 </script>
 <style lang="scss">
-#app {
-	font-family: "Avenir", Helvetica, Arial, sans-serif;
-	-webkit-font-smoothing: antialiased;
-	-moz-osx-font-smoothing: grayscale;
-}
+	#app {
+		font-family: "Avenir", Helvetica, Arial, sans-serif;
+		-webkit-font-smoothing: antialiased;
+		-moz-osx-font-smoothing: grayscale;
+	}
+
+    body {
+        margin: 0;
+    }
 </style>
