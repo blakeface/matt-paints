@@ -1,8 +1,8 @@
 <template>
 	<section>
 		<div class="image-container">
-			<div class="image-wrapper" v-for="i in 7" :key="i">
-				<img :src="`/images/${i}.png`">
+			<div class="image-wrapper hidden" v-for="i in imageCount" :key="i" :ref="i">
+				<img :src="`/images/${i}.png`" @load="handleLoad(i)">
 			</div>
 		</div>
 		<div class="content-container">
@@ -11,9 +11,36 @@
 		</div>
 	</section>
 </template>
+
 <script>
-	export default {};
+	import _ from "lodash";
+
+	export default {
+		data() {
+			return {
+				imageCount: 7,
+				intervalId: null
+			};
+		},
+		methods: {
+			handleLoad(i) {
+				if (i === this.imageCount) {
+					this.showImages();
+				}
+			},
+			showImages() {
+				_.forIn(this.$refs, (val, key) => {
+					setTimeout(() => val[0].classList.remove("hidden"), 500 * key);
+				});
+			},
+			animateImages() {}
+		},
+		destroyed() {
+			window.clearInterval(this.intervalId);
+		}
+	};
 </script>
+
 <style scoped lang="scss">
 	section {
 		width: 100%;
@@ -26,6 +53,19 @@
 		position: relative;
 		width: 50%;
 	}
+
+	.image-wrapper {
+		position: absolute;
+		bottom: 0;
+		left: 0;
+
+		img {
+			width: 100%;
+			height: 100%;
+			height: 100%;
+		}
+	}
+
 	.content-container {
 		position: relative;
 		width: 50%;
@@ -33,11 +73,5 @@
 		flex-flow: column nowrap;
 		align-items: center;
 		background: azure;
-	}
-
-	.image-wrapper {
-		position: absolute;
-		top: 0;
-		left: 0;
 	}
 </style>

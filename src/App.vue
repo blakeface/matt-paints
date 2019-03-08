@@ -20,7 +20,12 @@
 		-moz-osx-font-smoothing: grayscale;
 	}
 
-    body {
-        margin: 0;
-    }
+	body {
+		margin: 0;
+	}
+
+	// global classes
+	.hidden {
+		display: none;
+	}
 </style>
