@@ -37,3 +37,9 @@ npm run test
 ```
 npm run lint
 ```
+
+## Colors, images, etc
+
+-   image dimension is 2000 x 1333
+-   palette is found [here](https://color.adobe.com/kuler/12332434)
+
