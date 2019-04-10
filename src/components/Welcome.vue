@@ -37,9 +37,8 @@ export default {
 			}
 		},
 		showImages() {
-			console.log("loading image");
 			_.forIn(this.$refs, (val, key) => {
-				console.log(val, key);
+				// save id to destroy timeout on unmount
 				const id = window.setTimeout(
 					() => val[0].classList.remove("hidden"),
 					500 * key
@@ -48,27 +47,21 @@ export default {
 			});
 		},
 		getImagePath(i) {
-			const isFinalOfSeries = i % this.imageCount === 0;
+			const isLastOfSeries = i % this.imageCount === 0;
+			const numberOfSeries = parseInt(i / this.imageCount);
 
 			if (i <= this.imageCount) return `/images/${i}.png`;
 			else
 				return `/images/${
-					isFinalOfSeries ? this.imageCount : i % this.imageCount
+					isLastOfSeries ? this.imageCount : i % this.imageCount
 				}-color-${
-					isFinalOfSeries
-						? parseInt(i / this.imageCount) - 1
-						: parseInt(i / this.imageCount)
+					isLastOfSeries ? numberOfSeries - 1 : numberOfSeries
 				}.png`;
 		},
 		getColor(i) {
 			return this.colors[parseInt(i / this.imageCount)];
 		},
 		getImageCount() {
-			console.log(
-				this.imageCount,
-				this.colorVariations,
-				this.imageCount * (this.colorVariations + 1)
-			);
 			return this.imageCount * (this.colorVariations + 1);
 		}
 	},
