@@ -45,7 +45,7 @@ export default {
 				// get element from $refs
 				const element = this.$refs[i] ? this.$refs[i][0] : null;
 				const id = window.setTimeout(() => {
-					// last image, animate shit
+					// reverse loop, start animation on first house and watch it go bananas when it completes
 					if (i === this.imageCount) {
 						this.showBackgroundImages();
 						this.initImageAnimation();
@@ -83,8 +83,8 @@ export default {
 		},
 		getSyncopation() {
 			return _.random(0, 1) === 1
-				? this.interval / 2
-				: this.interval / 2 - 1;
+				? this.syncopation
+				: this.syncopation * -1;
 		},
 		showBackgroundImages() {
 			// place to load anxillary images
