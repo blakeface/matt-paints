@@ -1,6 +1,7 @@
 <template>
 	<section>
 		<div class="image-container">
+			<!-- houses! -->
 			<div
 				class="image-wrapper hidden"
 				v-for="i in getImageCount()"
@@ -26,7 +27,7 @@ export default {
 			imageCount: 7,
 			colorVariations: 2,
 			colorIndex: 0,
-			timeoutIDs: [],
+			timeoutID: -1,
 			interval: 500, // interval between images
 			syncopation: 250
 		};
@@ -44,58 +45,51 @@ export default {
 			for (let i = this.imageCount; i > 0; i--) {
 				// get element from $refs
 				const element = this.$refs[i] ? this.$refs[i][0] : null;
-				const id = window.setTimeout(() => {
+				// save id to destroy timeout on unmount
+				this.timeoutID = window.setTimeout(() => {
 					// reverse loop, start animation on first house and watch it go bananas when it completes
 					if (i === this.imageCount) {
-						this.showBackgroundImages();
-						this.initImageAnimation();
+						this.animateImage();
 					}
 					return element.classList.remove("hidden");
 				}, this.interval * i);
-
-				// save id to destroy timeout on unmount
-				this.timeoutIDs.push(id);
 			}
 		},
-		initImageAnimation() {
-			// animate 50 times
-			for (var i = 100; i >= 0; i--) {
-				const id = window.setTimeout(() => {
-					// get random image, layer, and  array of image variations
-					const imageIndex = _.random(1, this.imageCount);
-					const layerIndex = _.random(0, this.colorVariations);
-					const imageArray = Array.from(
-						{ length: this.colorVariations + 1 },
-						(val, i) => imageIndex + this.imageCount * i
-					);
-					// hide all except imageIndex
-					imageArray.forEach((refIndex, i) => {
-						if (i === layerIndex) {
-							this.$refs[refIndex][0].classList.remove("hidden");
-						} else {
-							this.$refs[refIndex][0].classList.add("hidden");
-						}
-					});
-				}, this.interval + this.getSyncopation() * i);
-				// save id for when component is destroyed
-				this.timeoutIDs.push(id);
-			}
+		animateImage() {
+			// save id to destroy timeout on unmount
+			this.timeoutID = window.setTimeout(() => {
+				// get random image, layer, and  array of image variations
+				const imageIndex = _.random(1, this.imageCount);
+				const layerIndex = _.random(0, this.colorVariations);
+				const imageArray = Array.from(
+					{ length: this.colorVariations + 1 },
+					(val, i) => imageIndex + this.imageCount * i
+				);
+				// hide all except imageIndex
+				imageArray.forEach((refIndex, i) => {
+					if (i === layerIndex) {
+						this.$refs[refIndex][0].classList.remove("hidden");
+					} else {
+						this.$refs[refIndex][0].classList.add("hidden");
+					}
+				});
+				// next image!
+				this.animateImage();
+			}, this.interval + this.getSyncopation());
 		},
 		getSyncopation() {
 			return _.random(0, 1) === 1
 				? this.syncopation
 				: this.syncopation * -1;
 		},
-		showBackgroundImages() {
-			// place to load anxillary images
-		},
+
 		getImagePath(i) {
 			const isLastOfSeries = i % this.imageCount === 0;
 			const numberOfSeries = parseInt(i / this.imageCount);
 
 			if (i <= this.imageCount) return `/images/${i}.png`;
 			else
-				return `/images/${
+				return `/images/houses/${
 					isLastOfSeries ? this.imageCount : i % this.imageCount
 				}-color-${
 					isLastOfSeries ? numberOfSeries - 1 : numberOfSeries
@@ -105,9 +99,8 @@ export default {
 			return this.imageCount * (this.colorVariations + 1);
 		}
 	},
-	beforeDestroyed() {
-		// kill any remaining timouts
-		this.timeoutIDs.forEach(id => window.clearTimeout(id));
+	beforeDestroy() {
+		window.clearTimeout(this.timeoutID);
 	}
 };
 </script>
@@ -133,18 +126,23 @@ section {
 .image-container {
 	position: relative;
 	width: 50%;
-	background: $bg_pink;
+	background: linear-gradient(
+		-30deg,
+		#fffcc8,
+		#e0ffe6 60%,
+		#ffe0e5 10%,
+		white
+	);
 
 	.image-wrapper {
 		position: absolute;
-		bottom: 15%;
+		bottom: 0;
 		left: 0;
-
-		img {
-			width: 100%;
-			height: 100%;
-			height: 100%;
-		}
+	}
+	img {
+		width: 100%;
+		height: 100%;
+		height: 100%;
 	}
 }
 
