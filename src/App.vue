@@ -1,31 +1,31 @@
 <template>
 	<main id="app">
-		<Welcome/>
+		<Welcome />
 	</main>
 </template>
 <script>
-	import Welcome from "./components/Welcome.vue";
+import Welcome from "./components/Welcome.vue";
 
-	export default {
-		name: "app",
-		components: {
-			Welcome
-		}
-	};
+export default {
+	name: "app",
+	components: {
+		Welcome
+	}
+};
 </script>
 <style lang="scss">
-	#app {
-		font-family: "Avenir", Helvetica, Arial, sans-serif;
-		-webkit-font-smoothing: antialiased;
-		-moz-osx-font-smoothing: grayscale;
-	}
+#app {
+	font-family: "Avenir", Helvetica, Arial, sans-serif;
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+}
 
-	body {
-		margin: 0;
-	}
+body {
+	margin: 0;
+}
 
-	// global classes
-	.hidden {
-		display: none;
-	}
+// global classes
+.hidden {
+	display: none;
+}
 </style>
