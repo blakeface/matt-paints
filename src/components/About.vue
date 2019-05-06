@@ -107,6 +107,7 @@ canvas {
   @extend %flex-center;
   p {
     max-width: 50%;
+    font-size: 2rem;
   }
 
   &:before {

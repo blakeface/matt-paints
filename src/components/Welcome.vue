@@ -144,7 +144,6 @@ section {
   }
   p {
     border-bottom: solid 2px red;
-    font-family: "Josefin Slab", serif;
   }
 }
 </style>

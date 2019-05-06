@@ -2,17 +2,20 @@
   <main id="app">
     <Welcome/>
     <About/>
+    <Contact/>
   </main>
 </template>
 <script>
 import Welcome from "./components/Welcome.vue";
 import About from "./components/About.vue";
+import Contact from "./components/Contact.vue";
 
 export default {
   name: "app",
   components: {
     Welcome,
-    About
+    About,
+    Contact
   }
 };
 </script>
@@ -36,5 +39,10 @@ body {
 section {
   width: 100%;
   height: 100vh;
+}
+
+p,
+a {
+  font-family: "Josefin Slab", serif;
 }
 </style>
