@@ -1,7 +1,10 @@
 <template>
   <section>
-    <p>CALL ME. ANYTIME.</p>
-    <a href="tel:+1231231234">123-123-1234</a>
+    <div>
+      <p>CALL ME. ANYTIME.</p>
+      <a href="tel:+1231231234">123-123-1234</a>
+      <a href="email:test@test.com">MattThePainter@painty.pants</a>
+    </div>
   </section>
 </template>
 
@@ -12,10 +15,14 @@
 
 section {
   background: linear-gradient($bg-blue, $bg-yellow);
-  min-height: 100vh;
-  height: unset;
   padding: 5rem 0;
   text-align: center;
+}
+
+div {
+  margin: 0 auto;
+  padding: 0 2rem;
+  max-width: 1250px;
 }
 
 p {
@@ -25,7 +32,10 @@ p {
 }
 
 a {
-  font-size: 15vw;
+  display: block;
+  word-break: break-all;
+  margin: 5rem 0 0 0;
+  font-size: 10vw;
   color: #000;
 }
 </style>

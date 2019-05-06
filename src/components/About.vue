@@ -85,7 +85,7 @@ section {
 canvas {
   // match global section style
   width: 100%;
-  height: 100vh;
+  min-height: 100vh;
   position: absolute;
   top: 0;
   left: 0;
@@ -96,10 +96,12 @@ canvas {
   $width-height: 66vh;
   $border-position: -3rem;
 
+  min-height: 100vh;
+
   border: $border;
   z-index: 5;
   width: $width-height;
-  height: $width-height;
+
   position: relative;
 
   padding: $border-position * -0.5;
