@@ -6,33 +6,33 @@ Built using Vue-CLI
 
 ## Cool Tools
 
--   Vue
--   SCSS
--   Chia / Mocha test
+- Vue
+- SCSS
+- Chia / Mocha test
 
 ## Commands, mans
 
 Typical NPM commands
 
--   Compiles and hot-reloads for development
+- Compiles and hot-reloads for development
 
 ```
 npm start
 ```
 
--   Compiles and minifies for production
+- Compiles and minifies for production
 
 ```
 npm run build
 ```
 
--   test that sh\*t
+- test that sh\*t
 
 ```
 npm run test
 ```
 
--   Lint it... like a belly button
+- Lint it... like a belly button
 
 ```
 npm run lint
@@ -40,6 +40,4 @@ npm run lint
 
 ## Colors, images, etc
 
--   image dimension is 2000 x 1333
--   palette is found [here](https://color.adobe.com/kuler/12332434)
-
+- image dimension is 2000 x 1333
