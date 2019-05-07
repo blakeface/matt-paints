@@ -3,7 +3,11 @@
     <div>
       <p>CALL ME. ANYTIME.</p>
       <a href="tel:+1231231234">123-123-1234</a>
-      <a href="email:test@test.com">MattThePainter@painty.pants</a>
+      <a
+        href="mailto:test@test.com"
+        target="_blank"
+        rel="noopener noreferrer"
+      >MattThePainter@painty.pants</a>
     </div>
   </section>
 </template>

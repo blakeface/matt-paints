@@ -106,7 +106,7 @@ section {
 
 .image-container {
   position: relative;
-  width: 50%;
+  width: 66.6%;
   background: linear-gradient(
     -30deg,
     $bg-yellow,
@@ -114,10 +114,11 @@ section {
     $bg-pink 10%,
     white
   );
+  overflow: hidden;
 
   .image-wrapper {
     position: absolute;
-    bottom: 0;
+    bottom: -6px;
     left: 0;
   }
   img {
@@ -129,7 +130,7 @@ section {
 
 .content-container {
   position: relative;
-  width: 50%;
+  width: 33.3%;
   display: flex;
   flex-flow: column nowrap;
   align-items: center;

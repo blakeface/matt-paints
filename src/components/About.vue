@@ -29,7 +29,7 @@ export default {
       // create path
       const path = new Path({
         strokeColor: this.colors[this.selectedColor],
-        strokeWidth: 150,
+        strokeWidth: 175,
         strokeCap: "round"
       });
 
@@ -37,6 +37,12 @@ export default {
 
       // put in array of paths
       this.paths.push(path);
+    },
+
+    handleClick() {
+      // set color and create new path
+      this.setColor();
+      this.createPath();
     }
   },
 
@@ -47,6 +53,7 @@ export default {
   mounted() {
     this.paper = paper.setup("paper-canvas-about");
     const $frame = document.querySelector(".frame");
+    const $$p = document.querySelectorAll("p");
 
     // create trailing paintbrush
     this.createPath();
@@ -59,11 +66,10 @@ export default {
 
     // click
     this.paper.view.onMouseDown = e => {
-      // set color and create new path
-      this.setColor();
-      this.createPath();
+      this.handleClick();
     };
-    $frame.addEventListener("click", () => {});
+    $frame.addEventListener("click", () => this.handleClick());
+    $$p.forEach(p => p.addEventListener("click", () => this.handleClick()));
   }
 };
 </script>
@@ -96,11 +102,10 @@ canvas {
   $width-height: 66vh;
   $border-position: -3rem;
 
-  min-height: 100vh;
-
   border: $border;
   z-index: 5;
   width: $width-height;
+  min-height: $width-height;
 
   position: relative;
 
