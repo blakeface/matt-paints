@@ -2,7 +2,7 @@
   <section>
     <div>
       <p>CALL ME. ANYTIME.</p>
-      <a href="tel:+1231231234">123-123-1234</a>
+      <a href="tel:+1231231234" target="_blank" rel="noopener noreferrer">123-123-1234</a>
       <a
         href="mailto:test@test.com"
         target="_blank"

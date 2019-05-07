@@ -33,7 +33,7 @@ body {
 
 // global classes
 .hidden {
-  display: none;
+  display: none !important;
 }
 
 section {

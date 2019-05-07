@@ -1,6 +1,6 @@
 <template>
   <section>
-    <div class="image-container">
+    <div class="image-container hidden" ref="image-container">
       <div class='title-small'>
         <h1>Matt Paints!</h1>
         <p>Matt will paint the f*ck out of your house</p>
@@ -11,10 +11,13 @@
         <img :src="getImagePath(i)" @load="handleLoad(i)">
       </div>
     </div>
-    <div class="content-container">
+    <div class="content-container hidden" ref="content-container">
       <h1>Matt Paints!</h1>
       <p>Matt will paint the f*ck out of your house</p>
     </div>
+    <section class='loader' ref='loader'>
+      <div class="loading-ring"><div></div><div></div><div></div><div></div></div>
+    </section>
   </section>
 </template>
 
@@ -36,6 +39,11 @@ export default {
     handleLoad(i) {
       // add 1 to account for original image
       if (i === this.imageCount * (this.colorVariations + 1)) {
+        // show page and remove loader
+        this.$refs['image-container'].classList.remove('hidden')
+        this.$refs['content-container'].classList.remove('hidden')
+        this.$refs['loader'].classList.add('hidden')
+        
         // all images are loaded! remove css hidden class
         this.showImages();
       }
@@ -103,6 +111,48 @@ export default {
 
 <style lang="scss" scoped>
 @import "../stylesheets/variables";
+
+// loading animation
+.loader {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.loading-ring {
+  display: inline-block;
+  position: relative;
+  width: 64px;
+  height: 64px;
+}
+.loading-ring div {
+  box-sizing: border-box;
+  display: block;
+  position: absolute;
+  width: 51px;
+  height: 51px;
+  margin: 6px;
+  border: 6px solid #000;
+  border-radius: 50%;
+  animation: loading 1.2s cubic-bezier(0.5, 0, 0.5, 1) infinite;
+  border-color: #000 transparent transparent transparent;
+}
+.loading-ring div:nth-child(1) {
+  animation-delay: -0.45s;
+}
+.loading-ring div:nth-child(2) {
+  animation-delay: -0.3s;
+}
+.loading-ring div:nth-child(3) {
+  animation-delay: -0.15s;
+}
+@keyframes loading {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
 
 section {
   display: flex;
