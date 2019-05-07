@@ -1,6 +1,11 @@
 <template>
   <section>
     <div class="image-container">
+      <div class='title-small'>
+        <h1>Matt Paints!</h1>
+        <p>Matt will paint the f*ck out of your house</p>
+      </div>
+
       <!-- houses! -->
       <div class="image-wrapper hidden" v-for="i in getImageCount()" :key="i" :ref="i">
         <img :src="getImagePath(i)" @load="handleLoad(i)">
@@ -126,6 +131,10 @@ section {
     height: 100%;
     height: 100%;
   }
+
+  .title-small {
+    display: none;
+  }
 }
 
 .content-container {
@@ -136,8 +145,9 @@ section {
   align-items: center;
   justify-content: center;
   background: azure;
+}
 
-  h1 {
+h1 {
     font-family: "Sacramento", cursive;
     transform: rotate(-10deg);
     font-size: 4rem;
@@ -145,6 +155,37 @@ section {
   }
   p {
     border-bottom: solid 2px red;
+  }
+
+  h1, p {
+    text-align: center;
+    margin: 0 1rem;
+  }
+
+@media (max-width: $bp-medium) {
+  .image-container {
+    width: 100%;
+    .title-small {
+      width: max-content;
+      display: block;
+      margin: 25vh auto 0 auto;
+    }
+
+    h1 {
+      transform: rotate(0deg);
+    }
+  }
+  .content-container {
+    display: none;
+  } 
+}
+
+@media (max-width: $bp-x-small) {
+  h1 {
+    font-size: 3rem;
+  }
+  p, h1 {
+    width: 75vw;
   }
 }
 </style>

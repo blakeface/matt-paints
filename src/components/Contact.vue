@@ -21,6 +21,7 @@ section {
   background: linear-gradient($bg-blue, $bg-yellow);
   padding: 5rem 0;
   text-align: center;
+  min-height: 100%;
 }
 
 div {
@@ -41,6 +42,15 @@ a {
   margin: 5rem 0 0 0;
   font-size: 10vw;
   color: #000;
+}
+
+@media (max-width: $bp-medium) {
+  p {
+    font-size: 20vw;
+  }
+  a {
+    margin-top: 2rem;
+  }
 }
 </style>
 
